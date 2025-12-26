@@ -1,0 +1,281 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f5f5f5;
+    color: #333;
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    background-color: white;
+    min-height: 100vh;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+header {
+    background-color: #4CAF50;
+    color: white;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+header h1 {
+    font-size: 1.8em;
+    margin-bottom: 10px;
+}
+
+.score {
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+main {
+    padding: 20px;
+}
+
+.screen {
+    display: none;
+}
+
+.screen.active {
+    display: block;
+}
+
+#welcome-screen {
+    text-align: center;
+    padding: 40px 20px;
+}
+
+#welcome-screen h2 {
+    color: #4CAF50;
+    margin-bottom: 20px;
+}
+
+#welcome-screen p {
+    margin-bottom: 15px;
+    font-size: 1.1em;
+}
+
+.question-info {
+    background-color: #f0f0f0;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+.question {
+    margin-bottom: 25px;
+}
+
+.question h3 {
+    font-size: 1.3em;
+    margin-bottom: 15px;
+    color: #333;
+}
+
+.options {
+    margin-bottom: 30px;
+}
+
+.option {
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 15px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.option:hover {
+    background-color: #f0f0f0;
+    border-color: #4CAF50;
+}
+
+.option.selected {
+    background-color: #e8f5e8;
+    border-color: #4CAF50;
+    color: #4CAF50;
+    font-weight: bold;
+}
+
+.option.correct {
+    background-color: #d4edda;
+    border-color: #28a745;
+    color: #155724;
+}
+
+.option.incorrect {
+    background-color: #f8d7da;
+    border-color: #dc3545;
+    color: #721c24;
+}
+
+.feedback {
+    padding: 15px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    font-weight: bold;
+    display: none;
+}
+
+.feedback.correct {
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+    display: block;
+}
+
+.feedback.incorrect {
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+    display: block;
+}
+
+.explanation {
+    background-color: #e2f0fb;
+    padding: 15px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    border-left: 4px solid #007bff;
+    display: none;
+}
+
+.explanation h4 {
+    margin-bottom: 10px;
+    color: #007bff;
+    font-size: 1.1em;
+}
+
+.explanation p {
+    margin: 5px 0;
+    line-height: 1.5;
+}
+
+.controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.btn {
+    padding: 12px 24px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1em;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: bold;
+}
+
+.btn-primary {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.btn-primary:hover {
+    background-color: #45a049;
+}
+
+.btn-secondary {
+    background-color: #6c757d;
+    color: white;
+}
+
+.btn-secondary:hover {
+    background-color: #5a6268;
+}
+
+.btn-success {
+    background-color: #28a745;
+    color: white;
+}
+
+.btn-success:hover {
+    background-color: #218838;
+}
+
+.btn:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+#result-screen {
+    text-align: center;
+    padding: 40px 20px;
+}
+
+#result-screen h2 {
+    color: #4CAF50;
+    margin-bottom: 30px;
+}
+
+.result-info {
+    background-color: #f0f8ff;
+    padding: 30px;
+    border-radius: 10px;
+    margin-bottom: 30px;
+    text-align: left;
+    display: inline-block;
+}
+
+.result-info p {
+    margin-bottom: 15px;
+    font-size: 1.2em;
+}
+
+.result-info p span {
+    font-weight: bold;
+    color: #4CAF50;
+}
+
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 15px;
+    margin-top: auto;
+    font-size: 0.9em;
+}
+
+@media (max-width: 600px) {
+    header {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    header h1 {
+        font-size: 1.5em;
+    }
+
+    .controls {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .btn {
+        width: 100%;
+    }
+
+    .result-info {
+        padding: 20px;
+    }
+
+    .result-info p {
+        font-size: 1.1em;
+    }
+}

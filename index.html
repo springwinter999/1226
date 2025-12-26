@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>软件测试刷题系统</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>软件测试刷题系统</h1>
+            <div class="score">
+                <span>当前得分：</span>
+                <span id="current-score">0</span>
+                <span>分</span>
+            </div>
+        </header>
+
+        <main>
+            <div id="welcome-screen" class="screen active">
+                <h2>欢迎使用软件测试刷题系统</h2>
+                <p>本系统包含软件测试课程的核心考点，共分为选择题和判断题。</p>
+                <p>每题5分，答对加分，答错不扣分。</p>
+                <p>完成所有题目后，系统将自动结算并显示您的成绩。</p>
+                <button id="start-btn" class="btn btn-primary">开始刷题</button>
+            </div>
+
+            <div id="question-screen" class="screen">
+                <div class="question-info">
+                    <span>第 <span id="current-question">1</span> 题 / 共 <span id="total-questions">0</span> 题</span>
+                </div>
+                <div class="question">
+                    <h3 id="question-text"></h3>
+                </div>
+                <div id="options" class="options"></div>
+                <div id="feedback" class="feedback"></div>
+                <div id="explanation" class="explanation"></div>
+                <div class="controls">
+                    <button id="next-btn" class="btn btn-primary">下一题</button>
+                    <button id="restart-btn" class="btn btn-secondary">重启</button>
+                    <button id="submit-btn" class="btn btn-success">提交</button>
+                </div>
+            </div>
+
+            <div id="result-screen" class="screen">
+                <h2>测试结果</h2>
+                <div class="result-info">
+                    <p>总得分：<span id="total-score">0</span> 分</p>
+                    <p>答对题数：<span id="correct-count">0</span> 题</p>
+                    <p>总题数：<span id="final-total-questions">0</span> 题</p>
+                    <p>正确率：<span id="accuracy">0</span>%</p>
+                </div>
+                <button id="restart-result-btn" class="btn btn-primary">重新开始</button>
+            </div>
+        </main>
+
+        <footer>
+            <p>© 2025 软件测试刷题系统 - 佛山科学技术学院学长整理</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
