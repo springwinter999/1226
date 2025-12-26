@@ -599,6 +599,7 @@ const totalScoreEl = document.getElementById('total-score');
 const correctCountEl = document.getElementById('correct-count');
 const finalTotalQuestionsEl = document.getElementById('final-total-questions');
 const accuracyEl = document.getElementById('accuracy');
+const questionListEl = document.getElementById('question-list');
 
 // 初始化
 function init() {
@@ -613,10 +614,83 @@ function init() {
     submitBtn.addEventListener('click', submitQuiz);
 }
 
+// 生成题目列表
+function renderQuestionList() {
+    questionListEl.innerHTML = '';
+    
+    for (let i = 0; i < questions.length; i++) {
+        const listItem = document.createElement('div');
+        listItem.className = 'question-list-item status-unanswered';
+        listItem.textContent = i + 1;
+        listItem.dataset.index = i;
+        
+        // 添加点击事件
+        listItem.addEventListener('click', () => jumpToQuestion(i));
+        
+        questionListEl.appendChild(listItem);
+    }
+}
+
+// 更新题目状态
+function updateQuestionStatus(index, status) {
+    const listItem = questionListEl.children[index];
+    if (listItem) {
+        // 移除所有状态类
+        listItem.className = 'question-list-item';
+        
+        // 添加新状态类
+        listItem.classList.add(`status-${status}`);
+        
+        // 如果是当前题目，添加激活状态
+        if (index === currentQuestionIndex) {
+            listItem.classList.add('active');
+        }
+    }
+}
+
+// 跳转到指定题目
+function jumpToQuestion(index) {
+    // 保存当前答题状态
+    if (selectedAnswers[currentQuestionIndex] && !isAnswered) {
+        checkAnswer();
+    }
+    
+    // 更新当前题目索引
+    currentQuestionIndex = index;
+    
+    // 重置状态
+    isAnswered = false;
+    nextBtn.textContent = '确认';
+    nextBtn.disabled = true;
+    
+    // 显示新题目
+    showQuestion();
+    
+    // 更新所有题目状态
+    updateAllQuestionStatus();
+}
+
+// 更新所有题目状态
+function updateAllQuestionStatus() {
+    for (let i = 0; i < questions.length; i++) {
+        const listItem = questionListEl.children[i];
+        if (listItem) {
+            // 移除激活状态
+            listItem.classList.remove('active');
+            
+            // 如果是当前题目，添加激活状态
+            if (i === currentQuestionIndex) {
+                listItem.classList.add('active');
+            }
+        }
+    }
+}
+
 // 开始刷题
 function startQuiz() {
     welcomeScreen.classList.remove('active');
     questionScreen.classList.add('active');
+    renderQuestionList();
     showQuestion();
 }
 
@@ -649,6 +723,9 @@ function showQuestion() {
     
     isAnswered = false;
     nextBtn.disabled = true;
+    
+    // 更新题目列表的激活状态
+    updateAllQuestionStatus();
 }
 
 // 选择选项
@@ -740,6 +817,9 @@ function checkAnswer() {
     // 更新当前得分
     currentScoreEl.textContent = score;
     
+    // 更新题目列表状态
+    updateQuestionStatus(currentQuestionIndex, isCorrect ? 'correct' : 'incorrect');
+    
     // 如果是最后一题，显示提交按钮
     if (currentQuestionIndex === questions.length - 1) {
         nextBtn.textContent = '完成';
@@ -798,6 +878,11 @@ function restartQuiz() {
     
     // 重置得分显示
     currentScoreEl.textContent = score;
+    
+    // 重置题目列表
+    if (questionListEl) {
+        questionListEl.innerHTML = '';
+    }
 }
 
 // 初始化应用

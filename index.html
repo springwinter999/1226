@@ -27,19 +27,27 @@
             </div>
 
             <div id="question-screen" class="screen">
-                <div class="question-info">
-                    <span>第 <span id="current-question">1</span> 题 / 共 <span id="total-questions">0</span> 题</span>
-                </div>
-                <div class="question">
-                    <h3 id="question-text"></h3>
-                </div>
-                <div id="options" class="options"></div>
-                <div id="feedback" class="feedback"></div>
-                <div id="explanation" class="explanation"></div>
-                <div class="controls">
-                    <button id="next-btn" class="btn btn-primary">下一题</button>
-                    <button id="restart-btn" class="btn btn-secondary">重启</button>
-                    <button id="submit-btn" class="btn btn-success">提交</button>
+                <div class="question-container">
+                    <div class="question-list-container">
+                        <h3>题目列表</h3>
+                        <div id="question-list" class="question-list"></div>
+                    </div>
+                    <div class="question-content">
+                        <div class="question-info">
+                            <span>第 <span id="current-question">1</span> 题 / 共 <span id="total-questions">0</span> 题</span>
+                        </div>
+                        <div class="question">
+                            <h3 id="question-text"></h3>
+                        </div>
+                        <div id="options" class="options"></div>
+                        <div id="feedback" class="feedback"></div>
+                        <div id="explanation" class="explanation"></div>
+                        <div class="controls">
+                            <button id="next-btn" class="btn btn-primary">下一题</button>
+                            <button id="restart-btn" class="btn btn-secondary">重启</button>
+                            <button id="submit-btn" class="btn btn-success">提交</button>
+                        </div>
+                    </div>
                 </div>
             </div>
 
